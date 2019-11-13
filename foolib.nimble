@@ -8,6 +8,8 @@ srcDir        = "src"
 
 backend       = "cpp"
 
+skipDirs      = @["examples", "tools"]
+
 # Dependencies
 
 requires "nim >= 1.0.2"
