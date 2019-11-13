@@ -28,7 +28,10 @@ when defined(linux):
     {.passL:"-lX11 -lpthread".}
 
 when defined(windows):
-    {.passL:"-lwinmm -lgdi32".}
+    when defined(vcc):
+        {.passL:"winmm.lib gdi32.lib shell32.lib".}
+    else:
+        {.passL:"-lwinmm -lgdi32".}
 
 
 
