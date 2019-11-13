@@ -27,6 +27,8 @@ const
 when defined(linux):
     {.passL:"-lX11 -lpthread".}
 
+when defined(windows):
+    {.passL:"-lwinmm -lgdi32".}
 
 
 
