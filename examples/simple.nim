@@ -1,3 +1,19 @@
+# Hack to make the example compile when --app:gui option is given to nim
+when defined(windows):
+    {.emit:"""/*INCLUDESECTION*/
+#include <raylib.h>
+#undef ShowWindow
+#define CloseWindow WINDOWS_CloseWindow
+#define ShowCursor WINDOWS_ShowCursor
+#define ShowWindow WINDOWS_ShowWindow
+#define Rectangle WINDOWS_Rectangle
+#include <windows.h>
+#undef CloseWindow
+#undef ShowCursor
+#undef ShowWindow
+#undef Rectangle
+""".}
+
 import foolib/[raylib, imgui]
 
 InitWindow(1024, 768, "hello")
